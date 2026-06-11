@@ -7,9 +7,12 @@ st.set_page_config(
 )
 
 st.title("🏋️ Sports Science Knowledge Graph")
+
 st.markdown("""
 Knowledge Graph construido a partir de artículos de Wikipedia utilizando técnicas de NLP (Named Entity Recognition con spaCy).
 """)
+
+# Ontología
 st.subheader("Ontología del dominio")
 
 st.markdown("""
@@ -37,6 +40,7 @@ La ontología se construyó a partir de conceptos clave de las Ciencias del Entr
 Estas relaciones representan conexiones conceptuales identificadas durante el proceso de construcción del Knowledge Graph.
 """)
 
+# Estadísticas
 st.subheader("Estadísticas del proyecto")
 
 col1, col2, col3 = st.columns(3)
@@ -44,6 +48,28 @@ col1, col2, col3 = st.columns(3)
 col1.metric("Artículos", 9)
 col2.metric("Nodos", 14)
 col3.metric("Relaciones", 10)
+
+# Artículos analizados
+st.subheader("Artículos analizados")
+
+articulos = [
+    "Sports Science",
+    "Exercise Physiology",
+    "Strength Training",
+    "Weight Training",
+    "Muscular Hypertrophy",
+    "VO2 Max",
+    "Physical Exercise",
+    "Physical Fitness",
+    "Overtraining"
+]
+
+for articulo in articulos:
+    st.write(f"• {articulo}")
+
+# Knowledge Graph
+st.subheader("Knowledge Graph")
+
 html_file = Path("knowledge_graph.html")
 
 if html_file.exists():
@@ -55,3 +81,5 @@ if html_file.exists():
         height=800,
         scrolling=True
     )
+else:
+    st.error("No se encontró el archivo knowledge_graph.html")
